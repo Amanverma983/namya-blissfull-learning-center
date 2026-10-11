@@ -1,0 +1,27 @@
+# Namya Blissfull Learning Center - Clinic Web Application
+
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment & Credentials (NEVER commit actual secret keys)
+.env
+.env.local
+.env.production
+supabase/.env
+
+# IDE & Editor files
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Build / Temp artifacts
+dist/
+build/
+.cache/

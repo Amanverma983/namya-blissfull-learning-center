@@ -1,0 +1,5 @@
+# Cloudflare Pages Redirects
+/book           /appointment.html   301
+/appointments   /appointment.html   301
+/doctor         /about.html         301
+/pricing        /services.html      301

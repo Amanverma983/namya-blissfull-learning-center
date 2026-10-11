@@ -1,0 +1,518 @@
+/* ============================================================================
+   NAMYA BLISSFULL LEARNING CENTER - ADMIN DASHBOARD STYLES
+   ============================================================================ */
+
+.admin-body {
+  background-color: #f8fafc;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ----------------------------------------------------------------------------
+   ADMIN AUTHENTICATION SCREEN (LOGIN MODAL / PANEL)
+   ---------------------------------------------------------------------------- */
+.admin-auth-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: radial-gradient(circle at center, #ccfbf1 0%, #f0fdfa 40%, #e2e8f0 100%);
+}
+
+.admin-login-card {
+  background-color: var(--white);
+  border-radius: var(--radius-xl);
+  padding: 3rem 2.5rem;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--slate-200);
+  text-align: center;
+}
+
+.admin-login-card .brand-icon {
+  margin: 0 auto 1.25rem auto;
+}
+
+.admin-login-card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.admin-login-card p {
+  color: var(--slate-500);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+/* ----------------------------------------------------------------------------
+   ADMIN APP LAYOUT (HEADER + SIDEBAR / MAIN)
+   ---------------------------------------------------------------------------- */
+.admin-top-nav {
+  background-color: var(--white);
+  border-bottom: 1px solid var(--slate-200);
+  padding: 0.85rem 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 500;
+}
+
+.admin-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.admin-badge {
+  background-color: var(--teal-100);
+  color: var(--teal-800);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-full);
+}
+
+.admin-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.admin-user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.admin-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-full);
+  background-color: var(--teal-600);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* ----------------------------------------------------------------------------
+   METRIC OVERVIEW CARDS
+   ---------------------------------------------------------------------------- */
+.admin-dashboard-container {
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  width: 100%;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.metric-card {
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  border: 1px solid var(--slate-200);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.metric-data h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--slate-900);
+  line-height: 1.1;
+}
+
+.metric-data p {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--slate-500);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.35rem;
+}
+
+.metric-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.metric-icon.teal { background-color: var(--teal-50); color: var(--teal-600); }
+.metric-icon.emerald { background-color: var(--emerald-50); color: var(--emerald-600); }
+.metric-icon.amber { background-color: #fef3c7; color: #d97706; }
+.metric-icon.slate { background-color: var(--slate-100); color: var(--slate-600); }
+
+/* ----------------------------------------------------------------------------
+   ADMIN TABS & CONTROLS
+   ---------------------------------------------------------------------------- */
+.admin-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--slate-200);
+  padding-bottom: 0.5rem;
+  overflow-x: auto;
+}
+
+.admin-tab-btn {
+  padding: 0.65rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--slate-600);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admin-tab-btn:hover {
+  background-color: var(--slate-100);
+  color: var(--slate-900);
+}
+
+.admin-tab-btn.active {
+  background-color: var(--teal-50);
+  color: var(--teal-700);
+}
+
+.tab-pane {
+  display: none;
+}
+.tab-pane.active {
+  display: block;
+}
+
+/* ----------------------------------------------------------------------------
+   FILTER & ACTION TOOLBAR
+   ---------------------------------------------------------------------------- */
+.admin-toolbar {
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  border: 1px solid var(--slate-200);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.toolbar-filters {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+
+.search-input-wrapper {
+  position: relative;
+  min-width: 260px;
+}
+
+.search-input-wrapper svg {
+  position: absolute;
+  left: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--slate-400);
+  pointer-events: none;
+}
+
+.search-input-wrapper input {
+  padding-left: 2.5rem;
+}
+
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* ----------------------------------------------------------------------------
+   APPOINTMENTS DATA TABLE
+   ---------------------------------------------------------------------------- */
+.table-card {
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--slate-200);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.admin-table th {
+  background-color: var(--slate-50);
+  padding: 1rem 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--slate-500);
+  border-bottom: 1px solid var(--slate-200);
+}
+
+.admin-table td {
+  padding: 1rem 1.25rem;
+  font-size: 0.92rem;
+  color: var(--slate-700);
+  border-bottom: 1px solid var(--slate-100);
+  vertical-align: middle;
+}
+
+.admin-table tr:hover td {
+  background-color: var(--teal-50);
+}
+
+.patient-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.patient-name {
+  font-weight: 600;
+  color: var(--slate-900);
+}
+
+.patient-contact {
+  font-size: 0.82rem;
+  color: var(--slate-500);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.2rem;
+}
+
+.whatsapp-chat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #047857;
+  background-color: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+.whatsapp-chat-pill:hover {
+  background-color: #059669;
+  color: var(--white);
+  border-color: #059669;
+}
+
+.ref-code {
+  font-family: monospace;
+  font-weight: 700;
+  background-color: var(--slate-100);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+}
+
+/* Status Badges */
+.badge-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.badge-status.pending { background-color: #fef3c7; color: #b45309; }
+.badge-status.confirmed { background-color: var(--emerald-50); color: var(--emerald-600); }
+.badge-status.completed { background-color: var(--slate-100); color: var(--slate-700); }
+.badge-status.cancelled { background-color: #fee2e2; color: #dc2626; }
+.badge-status.rejected { background-color: #f1f5f9; color: #64748b; }
+
+/* Action Buttons inside Table */
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn-action svg {
+  flex-shrink: 0;
+}
+
+/* Approve Button (Green) */
+.btn-approve {
+  background-color: var(--emerald-50);
+  color: var(--emerald-600);
+  border-color: #a7f3d0;
+}
+.btn-approve:hover {
+  background-color: var(--emerald-600);
+  color: var(--white);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+/* Reject Button (Red) */
+.btn-reject {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border-color: #fecaca;
+}
+.btn-reject:hover {
+  background-color: #dc2626;
+  color: var(--white);
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+}
+
+/* Complete Button (Teal) */
+.btn-complete {
+  background-color: var(--teal-50);
+  color: var(--teal-700);
+  border-color: var(--teal-200);
+}
+.btn-complete:hover {
+  background-color: var(--teal-600);
+  color: var(--white);
+}
+
+/* Cancel Button (Slate) */
+.btn-cancel {
+  background-color: var(--slate-100);
+  color: var(--slate-600);
+  border-color: var(--slate-200);
+}
+.btn-cancel:hover {
+  background-color: var(--slate-200);
+  color: var(--slate-900);
+}
+
+.btn-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--slate-200);
+  background-color: var(--white);
+  color: var(--slate-600);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.btn-icon:hover {
+  background-color: var(--slate-100);
+}
+
+/* Table Pagination Footer */
+.table-pagination {
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--slate-200);
+  background-color: var(--white);
+  font-size: 0.88rem;
+  color: var(--slate-500);
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Empty Table State */
+.table-empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--slate-400);
+}
+
+.table-empty-state svg {
+  margin: 0 auto 1rem auto;
+  opacity: 0.5;
+}
+
+/* ----------------------------------------------------------------------------
+   ADMIN SETTINGS & SLOT MANAGEMENT FORMS
+   ---------------------------------------------------------------------------- */
+.admin-card-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.admin-card {
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  border: 1px solid var(--slate-200);
+  box-shadow: var(--shadow-sm);
+}
+
+.admin-card-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--slate-100);
+}
+
+.admin-card-header h3 {
+  font-size: 1.25rem;
+}
+
+.admin-card-header p {
+  font-size: 0.85rem;
+  color: var(--slate-500);
+}

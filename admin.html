@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard & Staff Portal | Namya Blissfull Learning Center</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230d9488'><path d='M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z'/></svg>">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- =========================================================================
+       1. AUTHENTICATION SCREEN (LOGIN MODAL)
+       Visible only when unauthenticated. Public users see zero patient data.
+       ========================================================================= -->
+  <div id="adminAuthScreen" class="admin-auth-screen">
+    <div class="admin-login-card">
+      <div class="brand-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      </div>
+      <h2>Clinic Staff Portal</h2>
+      <p>Namya Blissfull Learning Center Staff Login</p>
+
+      <form id="adminLoginForm" novalidate>
+        <div class="form-group" style="text-align: left; margin-bottom: 1.25rem;">
+          <label for="loginEmail" class="form-label">Authorized Staff Email</label>
+          <input type="email" id="loginEmail" class="form-control" placeholder="admin@namyablissfull.com" required autocomplete="email" value="admin@namyablissfull.com">
+        </div>
+
+        <div class="form-group" style="text-align: left; margin-bottom: 1.75rem;">
+          <label for="loginPassword" class="form-label">Password</label>
+          <input type="password" id="loginPassword" class="form-control" placeholder="••••••••" required autocomplete="current-password" value="admin123">
+        </div>
+
+        <button type="submit" id="loginSubmitBtn" class="btn btn-primary btn-block btn-lg">
+          Secure Staff Sign In
+        </button>
+
+        <div style="margin-top: 1.5rem; font-size: 0.8rem; color: var(--slate-500); text-align: left; background-color: var(--slate-50); padding: 0.75rem; border-radius: var(--radius-md); border: 1px solid var(--slate-200);">
+          <strong>ℹ Authentication Notice:</strong>
+          <br>• For Live Cloud: Use credentials registered in Supabase Auth.
+          <br>• For Local Preview: Default demo credentials work instantly (e.g. <code>admin@namyablissfull.com</code> / <code>admin123</code>).
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       2. AUTHENTICATED ADMIN APP DASHBOARD
+       Rendered only when authenticated via Supabase Auth or verified session.
+       ========================================================================= -->
+  <div id="adminAppScreen" style="display: none;">
+    
+    <!-- Top Navigation Bar -->
+    <header class="admin-top-nav">
+      <div class="admin-nav-left">
+        <a href="index.html" class="brand-logo" target="_blank" title="Preview Public Website">
+          <div class="brand-icon" style="width: 36px; height: 36px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+          </div>
+          <span class="brand-title" style="font-size: 1.1rem;">Namya <span>Blissfull</span></span>
+        </a>
+        <span class="admin-badge">Admin Portal</span>
+      </div>
+
+      <div class="admin-nav-right">
+        <div class="admin-user-info">
+          <div class="admin-avatar">AD</div>
+          <span id="adminUserEmail" style="font-weight: 600; color: var(--slate-800);">admin@namyablissfull.com</span>
+        </div>
+        <button id="adminLogoutBtn" class="btn btn-secondary btn-sm" title="Log out">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          Sign Out
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Dashboard Container -->
+    <main class="admin-dashboard-container">
+      
+      <!-- Metrics Overview -->
+      <section class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-data">
+            <h3 id="metricToday">0</h3>
+            <p>Today's Appointments</p>
+          </div>
+          <div class="metric-icon teal">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-data">
+            <h3 id="metricUpcoming">0</h3>
+            <p>Upcoming Appointments</p>
+          </div>
+          <div class="metric-icon emerald">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-data">
+            <h3 id="metricPending">0</h3>
+            <p>Pending Requests</p>
+          </div>
+          <div class="metric-icon amber">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-data">
+            <h3 id="metricTotal">0</h3>
+            <p>Total Bookings</p>
+          </div>
+          <div class="metric-icon slate">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- Admin Navigation Tabs -->
+      <nav class="admin-tabs" aria-label="Dashboard views">
+        <button class="admin-tab-btn active" data-tab="tabAppointments">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          Appointments List
+        </button>
+        <button class="admin-tab-btn" data-tab="tabSlots">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+          Block Slots / Leave
+        </button>
+        <button class="admin-tab-btn" data-tab="tabSettings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          Clinic Settings
+        </button>
+      </nav>
+
+      <!-- TAB 1: APPOINTMENTS LIST -->
+      <section id="tabAppointments" class="tab-pane active">
+        
+        <!-- Filter Toolbar -->
+        <div class="admin-toolbar">
+          <div class="toolbar-filters">
+            
+            <!-- Search Input -->
+            <div class="search-input-wrapper">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="searchInput" class="form-control" placeholder="Search reference, patient, phone...">
+            </div>
+
+            <!-- Status Dropdown Filter -->
+            <select id="statusFilter" class="form-control" style="width: auto; min-width: 150px;">
+              <option value="all">All Statuses</option>
+              <option value="pending">Pending</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="completed">Completed</option>
+              <option value="cancelled">Cancelled</option>
+              <option value="rejected">Rejected</option>
+            </select>
+
+            <!-- Date Picker Filter -->
+            <input type="date" id="dateFilter" class="form-control" style="width: auto;">
+          </div>
+
+          <!-- Export Action -->
+          <div class="toolbar-actions">
+            <button id="exportCsvBtn" class="btn btn-secondary btn-sm" title="Download filtered appointments as CSV">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              Export to CSV
+            </button>
+          </div>
+        </div>
+
+        <!-- Data Table -->
+        <div class="table-card">
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Reference</th>
+                  <th>Patient Details</th>
+                  <th>Date & Time</th>
+                  <th>Service & Note</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="appointmentsTableBody">
+                <!-- Dynamically populated via admin.js -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Empty State -->
+          <div id="emptyState" class="table-empty-state" style="display: none;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <h4>No appointments found</h4>
+            <p>Try adjusting your search criteria or date filter.</p>
+          </div>
+
+          <!-- Pagination Footer -->
+          <div class="table-pagination">
+            <span id="paginationInfo">Showing 0 records</span>
+            <div class="pagination-controls">
+              <button id="prevPageBtn" class="btn btn-secondary btn-sm" disabled>Previous</button>
+              <button id="nextPageBtn" class="btn btn-secondary btn-sm" disabled>Next</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: BLOCK SLOTS & HOLIDAYS -->
+      <section id="tabSlots" class="tab-pane">
+        <div class="admin-card-container">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3>Block Date or Specific Slot</h3>
+              <p>Mark dates when the doctor will be unavailable or the clinic is closed.</p>
+            </div>
+
+            <form id="blockSlotForm">
+              <div class="form-group" style="margin-bottom: 1.25rem;">
+                <label for="blockDate" class="form-label">Date to Block *</label>
+                <input type="date" id="blockDate" class="form-control" required>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1.25rem;">
+                <label for="blockTime" class="form-label">Specific Time Slot (Optional)</label>
+                <input type="time" id="blockTime" class="form-control">
+                <small style="color: var(--slate-500); font-size: 0.8rem;">Leave blank to block the entire day.</small>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1.75rem;">
+                <label for="blockReason" class="form-label">Reason / Internal Note</label>
+                <input type="text" id="blockReason" class="form-control" placeholder="e.g. Doctor Conference / National Holiday">
+              </div>
+
+              <button type="submit" class="btn btn-primary">
+                Save Blocked Slot
+              </button>
+            </form>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3>Slot Management Guidelines</h3>
+              <p>How blocked dates protect the clinic calendar.</p>
+            </div>
+            <ul style="padding-left: 1.25rem; color: var(--slate-600); font-size: 0.92rem; line-height: 1.7;">
+              <li>When a date is marked as <strong>All Day Blocked</strong>, the public appointment calendar immediately hides all morning and evening slots for that day.</li>
+              <li>When a specific hour is blocked, only that slot will show as reserved/unavailable to public visitors.</li>
+              <li>Existing confirmed appointments are preserved in the list for reference.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: CLINIC PROFILE & SETTINGS -->
+      <section id="tabSettings" class="tab-pane">
+        <div class="admin-card" style="max-width: 800px; margin: 0 auto;">
+          <div class="admin-card-header">
+            <h3>Update Clinic Profile & Contact Details</h3>
+            <p>Update phone numbers, doctor name, and consultation hours across the public website.</p>
+          </div>
+
+          <form id="clinicSettingsForm">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="settingDoctorName" class="form-label">Doctor Name</label>
+                <input type="text" id="settingDoctorName" class="form-control" value="Dr. [Doctor Name Placeholder]">
+              </div>
+
+              <div class="form-group">
+                <label for="settingQualifications" class="form-label">Qualifications</label>
+                <input type="text" id="settingQualifications" class="form-control" value="MBBS, MD (Pediatrics) [Placeholder]">
+              </div>
+
+              <div class="form-group">
+                <label for="settingSpecialization" class="form-label">Specialization</label>
+                <input type="text" id="settingSpecialization" class="form-control" value="Child Development & Pediatrics">
+              </div>
+
+              <div class="form-group">
+                <label for="settingRegNo" class="form-label">Medical Registration No.</label>
+                <input type="text" id="settingRegNo" class="form-control" value="[Reg No - Pending Verification]">
+              </div>
+
+              <div class="form-group">
+                <label for="settingPhone" class="form-label">Clinic Phone Number</label>
+                <input type="text" id="settingPhone" class="form-control" value="+91 98765 43210">
+              </div>
+
+              <div class="form-group">
+                <label for="settingWhatsApp" class="form-label">WhatsApp Contact Number</label>
+                <input type="text" id="settingWhatsApp" class="form-control" value="+919876543210">
+              </div>
+
+              <div class="form-group-full form-group">
+                <label for="settingHours" class="form-label">Public Opening Hours Text</label>
+                <input type="text" id="settingHours" class="form-control" value="Mon - Sat: 9:00 AM - 1:00 PM & 4:00 PM - 8:00 PM | Sun: Closed">
+              </div>
+
+              <div class="form-group-full" style="margin-top: 1rem;">
+                <button type="submit" class="btn btn-primary btn-lg">
+                  Save & Synchronize Clinic Settings
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/admin.js?v=2.1"></script>
+</body>
+</html>
