@@ -33,7 +33,10 @@
 }
 
 .admin-login-card .brand-icon {
+  width: 68px;
+  height: 68px;
   margin: 0 auto 1.25rem auto;
+  padding: 4px;
 }
 
 .admin-login-card h2 {

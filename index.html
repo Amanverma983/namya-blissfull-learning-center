@@ -15,8 +15,9 @@
   <meta property="og:url" content="https://namyablissfull.com/">
   <meta property="og:image" content="https://namyablissfull.com/assets/og-cover.png">
 
-  <!-- Favicon placeholder SVG -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230d9488'><path d='M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z'/></svg>">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/logo-badge.png">
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
@@ -73,7 +74,7 @@
     <div class="container navbar">
       <a href="index.html" class="brand-logo" aria-label="Namya Blissfull Learning Center Home">
         <div class="brand-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+          <img src="images/logo.png" alt="Namya Blissfull Learning Center Logo" class="brand-logo-img">
         </div>
         <div class="brand-text">
           <span class="brand-title">Namya <span>Blissfull</span></span>
@@ -112,10 +113,15 @@
   <div id="mobileDrawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
     <div class="mobile-drawer-content">
       <div class="mobile-drawer-header">
-        <div class="brand-text">
-          <span class="brand-title">Namya <span>Blissfull</span></span>
-          <span class="brand-subtitle">Clinic & Care</span>
-        </div>
+        <a href="index.html" class="brand-logo" style="text-decoration:none;">
+          <div class="brand-icon" style="width: 44px; height: 44px;">
+            <img src="images/logo.png" alt="Namya Blissfull Learning Center Logo" class="brand-logo-img">
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">Namya <span>Blissfull</span></span>
+            <span class="brand-subtitle">Clinic & Care</span>
+          </div>
+        </a>
         <button id="closeDrawer" class="menu-toggle" aria-label="Close menu">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
@@ -188,11 +194,11 @@
             <div class="hero-card-main">
               <div class="hero-card-header">
                 <div class="hero-avatar">
-                  🩺
+                  <img src="images/renu-kumari-avatar.jpg" alt="Renu Kumari - Director">
                 </div>
                 <div class="hero-card-meta">
-                  <h3 data-clinic-doctor>Dr. [Doctor Name Placeholder]</h3>
-                  <p data-clinic-specialization>Developmental Pediatrics & Child Guidance</p>
+                  <h3 data-clinic-doctor>Renu Kumari</h3>
+                  <p data-clinic-specialization>Director & Child Development Specialist</p>
                 </div>
               </div>
               <ul class="hero-card-features">
@@ -252,31 +258,36 @@
 
         <div class="doctor-profile-grid">
           <div class="doctor-image-container">
-            <div class="doctor-photo-placeholder">
-              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-              <h3 data-clinic-doctor>Dr. [Doctor Name Placeholder]</h3>
-              <p style="font-size: 0.9rem; margin-top: 0.5rem;" data-clinic-specialization>Senior Pediatrician & Child Guidance Specialist</p>
-              <span class="placeholder-badge">Doctor Photograph Placeholder</span>
+            <img src="images/renu-kumari-director.jpg" alt="Renu Kumari - Director, Namya Blissfull Learning Center" class="doctor-profile-img">
+            <div class="doctor-photo-badge">
+              <div>
+                <span class="badge-name">Renu Kumari</span>
+                <span class="badge-role">Director & Center Head</span>
+              </div>
+              <span class="badge-role" style="color: #99f6e4;">Verified</span>
             </div>
           </div>
 
           <div class="doctor-details">
-            <span class="section-tag">Lead Medical Practitioner</span>
-            <h2 data-clinic-doctor>Dr. [Doctor Name Placeholder]</h2>
-            <p class="doctor-spec" data-clinic-qualifications>MBBS, MD (Pediatrics) [Placeholder - Pending Verification]</p>
+            <span class="section-tag">Director & Leadership</span>
+            <h2 data-clinic-doctor>Renu Kumari</h2>
+            <p class="doctor-spec" data-clinic-qualifications>Director & Child Development Specialist</p>
             <p>
-              With extensive experience in developmental assessment and child healthcare, our doctor believes in an empathetic, evidence-based paradigm. We prioritize listening deeply to parents' observations, observing the child in a calm, playful atmosphere, and crafting practical, goal-oriented roadmaps.
+              Under the visionary leadership of <strong>Renu Kumari</strong>, Namya Blissfull Learning Center brings a deeply empathetic, comprehensive, and child-centric approach to early developmental milestones, speech growth, and behavioral guidance.
+            </p>
+            <p>
+              We prioritize listening deeply to parents' observations, observing the child in a calm, playful atmosphere, and crafting structured, practical, and goal-oriented roadmaps for lifelong confidence and learning excellence.
             </p>
             
             <table class="credentials-table">
               <tbody>
                 <tr>
-                  <th>Medical Registration</th>
-                  <td data-clinic-regno>[Registration No. - Pending Official Verification]</td>
+                  <th>Leadership Role</th>
+                  <td data-clinic-regno>Director & Founder</td>
                 </tr>
                 <tr>
                   <th>Specialization</th>
-                  <td data-clinic-specialization>Developmental Pediatrics & Child Guidance</td>
+                  <td data-clinic-specialization>Child Development, Learning Support & Center Director</td>
                 </tr>
                 <tr>
                   <th>Consultation Modes</th>
@@ -499,7 +510,12 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <h3 data-clinic-name>Namya Blissfull Learning Center</h3>
+          <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1rem;">
+            <div class="brand-icon" style="width: 46px; height: 46px; background: white; border: none; padding: 2px;">
+              <img src="images/logo.png" alt="Namya Blissfull Learning Center Logo" class="brand-logo-img">
+            </div>
+            <h3 data-clinic-name style="margin-bottom: 0;">Namya Blissfull Learning Center</h3>
+          </div>
           <p data-clinic-tagline>
             Specialized developmental pediatric consultations, speech therapy, and personalized parent guidance in New Delhi.
           </p>
